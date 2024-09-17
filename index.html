@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive AEW Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #0CC0DF;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 40%;
+            max-width: 800px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 5px solid #0CC0DF;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .qa-box {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .question {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .answer {
+            font-size: 1.2em;
+            color: #555;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img id="quizImage" src="https://i.imgur.com/gGOAenD.png" alt="Quiz Image">
+        <div class="qa-box">
+            <div id="question" class="question">Click the image to get a question!</div>
+            <div id="answer" class="answer"></div>
+        </div>
+    </div>
+    
+    <script>
+        const questionsAndAnswers = [
+            { question: "Who is the founder of All Elite Wrestling?", answer: "Tony Khan" },
+            { question: "In what year was AEW officially founded?", answer: "2019" },
+            { question: "What was the name of AEW's first-ever pay-per-view event?", answer: "'Double or Nothing' (2019)" },
+            { question: "Who were the inaugural AEW World Tag Team Champions?", answer: "SCU (SoCal Uncensored)" },
+            { question: "Which wrestler became the first AEW World Champion?", answer: "Chris Jericho" },
+            { question: "What is the name of AEW's weekly television show?", answer: "'AEW Dynamite'" },
+            { question: "Who was the first female AEW World Champion?", answer: "Riho" },
+            { question: "Which wrestler is known as 'The American Nightmare'?", answer: "Cody Rhodes" },
+            { question: "Who was the first AEW TNT Champion?", answer: "Cody Rhodes" },
+            { question: "Which wrestling legend serves as a mentor to Darby Allin?", answer: "Sting" },
+            { question: "What is Jon Moxley's real name?", answer: "Jonathan Good" },
+            { question: "Who did Chris Jericho defeat to become the first AEW World Champion?", answer: "Hangman Adam Page" },
+            { question: "Which wrestling faction includes Kenny Omega and The Young Bucks?", answer: "The Elite" },
+            { question: "What is the signature submission move of Chris Jericho?", answer: "Walls of Jericho" },
+            { question: "Who is the 'Mad King' in AEW?", answer: "Eddie Kingston" },
+            { question: "What is the real name of AEW wrestler 'MJF'?", answer: "Maxwell Jacob Friedman" },
+            { question: "Who were the first-ever AEW World Trios Champions?", answer: "The Elite (Kenny Omega and The Young Bucks)" },
+            { question: "Which AEW wrestler is known as 'Freshly Squeezed'?", answer: "Orange Cassidy" },
+            { question: "Who is the current head of AEW's women's division?", answer: "Kenny Omega (as of the time of the founding)" },
+            { question: "What is the signature move of Kenny Omega?", answer: "One-Winged Angel" },
+            { question: "Which AEW wrestler is known for their catchphrase 'It's Sting!'?", answer: "Tony Schiavone (announcer)" },
+            { question: "Who did Jon Moxley defeat to win his first AEW World Championship?", answer: "Chris Jericho" },
+            { question: "Which AEW wrestler uses the nickname 'The Cleaner'?", answer: "Kenny Omega" },
+            { question: "Which tag team won the first-ever AEW Tag Team Championship Tournament?", answer: "SCU (SoCal Uncensored)" },
+            { question: "Who did Cody Rhodes defeat to become the first-ever AEW TNT Champion?", answer: "Lance Archer" },
+            { question: "What is AEW's secondary television show called?", answer: "'AEW Rampage'" },
+            { question: "Who did CM Punk face in his return match to professional wrestling at 'All Out 2021'?", answer: "Darby Allin" },
+            { question: "What is the signature move of CM Punk?", answer: "Go to Sleep (GTS)" },
+            { question: "Who was the inaugural AEW Women's World Champion?", answer: "Riho" },
+            { question: "Which wrestler is known as 'The Bastard' in AEW?", answer: "PAC" },
+            { question: "What is AEW's annual Memorial Day weekend PPV event called?", answer: "'Double or Nothing'" },
+            { question: "Who won the first AEW Casino Battle Royale?", answer: "Hangman Adam Page" },
+            { question: "Which AEW wrestler is known for the catchphrase 'I am better than you, and you know it'?", answer: "MJF" },
+            { question: "Who was AEW World Champion at the end of 2020?", answer: "Kenny Omega" },
+            { question: "Which AEW tag team consists of brothers?", answer: "The Lucha Brothers (Rey Fenix and Penta El Zero Miedo)" },
+            { question: "Who did Jon Moxley defeat to win his second AEW World Championship?", answer: "MJF" },
+            { question: "Which AEW wrestler is a former Olympian?", answer: "Jake Hager" },
+            { question: "What is the signature move of Darby Allin?", answer: "Coffin Drop" },
+            { question: "Which AEW wrestler is known for the catchphrase 'Cowboy Sh*t'?", answer: "Hangman Adam Page" },
+            { question: "What faction does Chris Jericho lead in AEW?", answer: "The Jericho Appreciation Society" },
+            { question: "Which AEW wrestler was formerly known as 'Dean Ambrose' in WWE?", answer: "Jon Moxley" },
+            { question: "Who is the current AEW TNT Champion?", answer: "Darby Allin" },  // This would change depending on the current date.
+            { question: "Who won the first Stadium Stampede match at AEW's Double or Nothing 2020?", answer: "The Elite" },
+            { question: "Which AEW wrestler was the first to appear on 'AEW Dark: Elevation'?", answer: "Kenny Omega" },
+            { question: "Which AEW wrestler is known for his 'Death Rider' finisher?", answer: "Jon Moxley" },
+            { question: "Who was the first AEW wrestler to hold both the AEW World Championship and the AAA Mega Championship?", answer: "Kenny Omega" },
+            { question: "Which wrestler is known as 'The Murderhawk Monster'?", answer: "Lance Archer" },
+            { question: "What is the signature move of MJF?", answer: "Salt of the Earth" },
+            { question: "Who did Kenny Omega defeat to win his first AEW World Championship?", answer: "Jon Moxley" },
+            { question: "Which AEW faction includes PAC, Penta El Zero Miedo, and Rey Fenix?", answer: "Death Triangle" },
+            { question: "Who is the leader of the faction 'The Pinnacle'?", answer: "MJF" },
+            { question: "Which AEW wrestler is known for his 'Superkick Party'?", answer: "The Young Bucks" },
+            { question: "Who did CM Punk defeat to win his first AEW World Championship?", answer: "Hangman Adam Page" },
+            { question: "What was the first-ever main event on AEW Dynamite?", answer: "Kenny Omega & The Young Bucks vs. Chris Jericho, Santana & Ortiz" },
+            { question: "Which AEW wrestler is known for the 'Panama Sunrise'?", answer: "Adam Cole" },
+            { question: "What is the signature move of Hangman Adam Page?", answer: "Buckshot Lariat" },
+            { question: "Which AEW wrestler is the 'Face of the Revolution' ladder match winner in 2021?", answer: "Scorpio Sky" },
+            { question: "Who is AEW's 'The Redeemer'?", answer: "Miro" },
+            { question: "Who were the first female tag team champions in AEW?", answer: "AEW doesn't have a Women's Tag Team Championship." },
+            { question: "Which AEW wrestler uses the phrase 'Best Bout Machine'?", answer: "Kenny Omega" },
+            { question: "Who did Jon Moxley defeat to win his third AEW World Championship?", answer: "CM Punk" },
+            { question: "Which AEW PPV event takes place in Chicago annually?", answer: "'All Out'" },
+            { question: "Who did Ruby Soho face in her AEW debut match?", answer: "Britt Baker" },
+            { question: "Who did Britt Baker defeat to win the AEW Women's World Championship?", answer: "Hikaru Shida" },
+            { question: "Which AEW wrestler is nicknamed 'Le Champion'?", answer: "Chris Jericho" },
+            { question: "Who was the first AEW wrestler to be inducted into the Wrestling Observer Newsletter Hall of Fame?", answer: "Chris Jericho" },
+            { question: "Which AEW wrestler is known as 'The Native Beast'?", answer: "Nyla Rose" },
+            { question: "Which AEW faction includes Sting and Darby Allin?", answer: "They frequently team together, but they are not officially part of a faction." },
+            { question: "Which AEW wrestler is known for using a skateboard as a weapon?", answer: "Darby Allin" },
+            { question: "What is the theme song for Jon Moxley?", answer: "'Wild Thing' by The Troggs" },
+            { question: "Who is the 'Spanish God' of AEW?", answer: "Sammy Guevara" },
+            { question: "Which AEW faction was founded by Cody Rhodes?", answer: "The Nightmare Family" },
+            { question: "Who did Hikaru Shida defeat to win her AEW Women's World Championship?", answer: "Nyla Rose" },
+            { question: "What is the signature move of Matt Hardy?", answer: "Twist of Fate" },
+            { question: "Which AEW wrestler is known as 'Jungle Boy'?", answer: "Jack Perry" },
+            { question: "Who did The Young Bucks defeat to win their first AEW World Tag Team Championship?", answer: "FTR" },
+            { question: "Who did Chris Jericho face in the first-ever AEW Blood & Guts match?", answer: "The Pinnacle" },
+            { question: "What is the AEW signature match type that includes five rings and ten wrestlers?", answer: "Blood & Guts" }
+        ];
+
+        let currentQuestionIndex = -1;
+
+        function getRandomQuestion() {
+            let newIndex;
+            do {
+                newIndex = Math.floor(Math.random() * questionsAndAnswers.length);
+            } while (newIndex === currentQuestionIndex);
+            currentQuestionIndex = newIndex;
+            return questionsAndAnswers[newIndex];
+        }
+
+        document.getElementById('quizImage').addEventListener('click', function() {
+            const { question, answer } = getRandomQuestion();
+            document.getElementById('question').innerText = question;
+            document.getElementById('answer').innerText = answer;
+        });
+    </script>
+</body>
+</html>
