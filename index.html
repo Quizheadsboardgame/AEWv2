@@ -3,98 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Image Viewer</title>
+    <title>Random Image Slideshow</title>
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        #image-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        body {
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #000;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        
+        #imageContainer {
+            width: 70%;
+            height: auto;
+            transition: transform 0.5s ease;
+            animation: clickMotion 0.5s ease;
         }
 
-        img {
-            max-width: 100%;
-            max-height: 100%;
-            cursor: pointer;
-            transition: transform 0.1s ease;
-            transform: scale(1.6); /* Zoom in by 60% */
-        }
-
-        img:active {
-            transform: scale(1.52); /* Slight reduction when clicked (1.6 * 0.95) */
+        @keyframes clickMotion {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.95); }
+            100% { transform: scale(1); }
         }
     </style>
 </head>
 <body>
 
-    <div id="image-container">
-        <img id="random-image" src="https://i.postimg.cc/htD6ZVVC/1.png" alt="Random Image">
-    </div>
+<img id="imageContainer" src="" alt="Random Image">
 
-    <script>
-        // Array of image URLs
-        const images = [
-            'https://i.postimg.cc/htD6ZVVC/1.png', 'https://i.postimg.cc/769T984t/10.png',
-            'https://i.postimg.cc/fWH90NBJ/11.png', 'https://i.postimg.cc/N0w9wffP/12.png',
-            'https://i.postimg.cc/x1mJ7bYz/13.png', 'https://i.postimg.cc/x878p945/14.png',
-            'https://i.postimg.cc/g0dJTSNC/15.png', 'https://i.postimg.cc/VvSLC3kC/16.png',
-            'https://i.postimg.cc/tRfgjCBt/17.png', 'https://i.postimg.cc/Z5PYpP4V/18.png',
-            'https://i.postimg.cc/G2tbWZY5/19.png', 'https://i.postimg.cc/G2GXmpk8/2.png',
-            'https://i.postimg.cc/DfWXsND6/20.png', 'https://i.postimg.cc/Jz8DfzhY/21.png',
-            'https://i.postimg.cc/nLRX9KGN/22.png', 'https://i.postimg.cc/0jmj4T1q/23.png',
-            'https://i.postimg.cc/Pf8CNwpF/24.png', 'https://i.postimg.cc/bwLJ40Wd/25.png',
-            'https://i.postimg.cc/K89G0G3M/26.png', 'https://i.postimg.cc/R0NM8kwb/27.png',
-            'https://i.postimg.cc/g0QYPgDc/28.png', 'https://i.postimg.cc/j2rtDCmG/29.png',
-            'https://i.postimg.cc/XNK2Mpjt/3.png', 'https://i.postimg.cc/0NMsZpqT/30.png',
-            'https://i.postimg.cc/y6TwmfZJ/31.png', 'https://i.postimg.cc/X77tQwfs/32.png',
-            'https://i.postimg.cc/qvNSd4Zn/33.png', 'https://i.postimg.cc/Nj2Jzb5k/34.png',
-            'https://i.postimg.cc/0NgWRmSR/35.png', 'https://i.postimg.cc/3RYtWT9t/36.png',
-            'https://i.postimg.cc/SsdDMvvk/37.png', 'https://i.postimg.cc/vTShP6yK/38.png',
-            'https://i.postimg.cc/9ftB6kVZ/39.png', 'https://i.postimg.cc/d39nGSNJ/4.png',
-            'https://i.postimg.cc/k4Tv4t25/40.png', 'https://i.postimg.cc/tRmzGW0S/41.png',
-            'https://i.postimg.cc/wjD5Nr1Z/42.png', 'https://i.postimg.cc/vTp9g7bG/43.png',
-            'https://i.postimg.cc/J7gj28JS/44.png', 'https://i.postimg.cc/Vk9MvbTc/45.png',
-            'https://i.postimg.cc/QMX7TdGK/46.png', 'https://i.postimg.cc/4dyhW23J/47.png',
-            'https://i.postimg.cc/mrXSZHzg/48.png', 'https://i.postimg.cc/26171ShF/49.png',
-            'https://i.postimg.cc/cCWXgNmD/5.png', 'https://i.postimg.cc/DZRdL3cV/50.png',
-            'https://i.postimg.cc/yx7y6y1t/6.png', 'https://i.postimg.cc/TY7JGbZN/7.png',
-            'https://i.postimg.cc/cLP7tS1Q/8.png', 'https://i.postimg.cc/QM5QpyVv/9.png'
-        ];
+<script>
+    const imageUrls = [
+        "https://i.postimg.cc/htD6ZVVC/1.png",
+        "https://i.postimg.cc/769T984t/10.png",
+        "https://i.postimg.cc/fWH90NBJ/11.png",
+        "https://i.postimg.cc/N0w9wffP/12.png",
+        "https://i.postimg.cc/x1mJ7bYz/13.png",
+        "https://i.postimg.cc/x878p945/14.png",
+        "https://i.postimg.cc/g0dJTSNC/15.png",
+        "https://i.postimg.cc/VvSLC3kC/16.png",
+        "https://i.postimg.cc/tRfgjCBt/17.png",
+        "https://i.postimg.cc/Z5PYpP4V/18.png",
+        "https://i.postimg.cc/G2tbWZY5/19.png",
+        "https://i.postimg.cc/G2GXmpk8/2.png",
+        "https://i.postimg.cc/DfWXsND6/20.png",
+        "https://i.postimg.cc/Jz8DfzhY/21.png",
+        "https://i.postimg.cc/nLRX9KGN/22.png",
+        "https://i.postimg.cc/0jmj4T1q/23.png",
+        "https://i.postimg.cc/Pf8CNwpF/24.png",
+        "https://i.postimg.cc/bwLJ40Wd/25.png",
+        "https://i.postimg.cc/K89G0G3M/26.png",
+        "https://i.postimg.cc/R0NM8kwb/27.png",
+        "https://i.postimg.cc/g0QYPgDc/28.png",
+        "https://i.postimg.cc/j2rtDCmG/29.png",
+        "https://i.postimg.cc/XNK2Mpjt/3.png",
+        "https://i.postimg.cc/0NMsZpqT/30.png",
+        "https://i.postimg.cc/y6TwmfZJ/31.png",
+        "https://i.postimg.cc/X77tQwfs/32.png",
+        "https://i.postimg.cc/qvNSd4Zn/33.png",
+        "https://i.postimg.cc/Nj2Jzb5k/34.png",
+        "https://i.postimg.cc/0NgWRmSR/35.png",
+        "https://i.postimg.cc/3RYtWT9t/36.png",
+        "https://i.postimg.cc/SsdDMvvk/37.png",
+        "https://i.postimg.cc/vTShP6yK/38.png",
+        "https://i.postimg.cc/9ftB6kVZ/39.png",
+        "https://i.postimg.cc/d39nGSNJ/4.png",
+        "https://i.postimg.cc/k4Tv4t25/40.png",
+        "https://i.postimg.cc/tRmzGW0S/41.png",
+        "https://i.postimg.cc/wjD5Nr1Z/42.png",
+        "https://i.postimg.cc/vTp9g7bG/43.png",
+        "https://i.postimg.cc/J7gj28JS/44.png",
+        "https://i.postimg.cc/Vk9MvbTc/45.png",
+        "https://i.postimg.cc/QMX7TdGK/46.png",
+        "https://i.postimg.cc/4dyhW23J/47.png",
+        "https://i.postimg.cc/mrXSZHzg/48.png",
+        "https://i.postimg.cc/26171ShF/49.png",
+        "https://i.postimg.cc/cCWXgNmD/5.png",
+        "https://i.postimg.cc/DZRdL3cV/50.png",
+        "https://i.postimg.cc/yx7y6y1t/6.png",
+        "https://i.postimg.cc/TY7JGbZN/7.png",
+        "https://i.postimg.cc/cLP7tS1Q/8.png",
+        "https://i.postimg.cc/QM5QpyVv/9.png"
+    ];
 
-        let availableImages = [...images]; // Create a copy to track remaining images
-
-        const imageElement = document.getElementById('random-image');
-
-        function showRandomImage() {
-            if (availableImages.length === 0) {
-                availableImages = [...images]; // Reset when all images are shown
-            }
-
-            const randomIndex = Math.floor(Math.random() * availableImages.length);
-            const randomImage = availableImages.splice(randomIndex, 1)[0];
-
-            imageElement.src = randomImage;
-
-            // Trigger a small vibration (100ms)
-            if (navigator.vibrate) {
-                navigator.vibrate(100);
-            }
+    let usedImages = [];
+    
+    function showRandomImage() {
+        if (usedImages.length === imageUrls.length) {
+            usedImages = []; // Reset if all images have been shown
         }
 
-        imageElement.addEventListener('click', showRandomImage);
-    </script>
+        let randomIndex;
+        do {
+            randomIndex = Math.floor(Math.random() * imageUrls.length);
+        } while (usedImages.includes(randomIndex));
+
+        usedImages.push(randomIndex);
+        const randomImageUrl = imageUrls[randomIndex];
+
+        const imgElement = document.getElementById('imageContainer');
+        imgElement.src = randomImageUrl;
+
+        // Trigger the click motion effect on each new image
+        imgElement.style.animation = 'none';
+        setTimeout(() => {
+            imgElement.style.animation = 'clickMotion 0.5s';
+        }, 10);
+    }
+
+    // Show the first random image on load
+    showRandomImage();
+
+    // Change image every 3 seconds
+    setInterval(showRandomImage, 3000);
+</script>
 
 </body>
 </html>
