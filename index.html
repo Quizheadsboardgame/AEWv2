@@ -29,17 +29,18 @@
             max-height: 100%;
             cursor: pointer;
             transition: transform 0.1s ease;
+            transform: scale(1.6); /* Zoom in by 60% */
         }
 
         img:active {
-            transform: scale(0.95);
+            transform: scale(1.52); /* Slight reduction when clicked (1.6 * 0.95) */
         }
     </style>
 </head>
 <body>
 
     <div id="image-container">
-        <img id="random-image" alt="Random Image">
+        <img id="random-image" src="https://i.postimg.cc/htD6ZVVC/1.png" alt="Random Image">
     </div>
 
     <script>
@@ -76,21 +77,6 @@
 
         const imageElement = document.getElementById('random-image');
 
-        // Function to enter full screen mode
-        function enterFullScreen() {
-            const elem = document.documentElement;
-            if (elem.requestFullscreen) {
-                elem.requestFullscreen();
-            } else if (elem.mozRequestFullScreen) { // Firefox
-                elem.mozRequestFullScreen();
-            } else if (elem.webkitRequestFullscreen) { // Chrome, Safari, and Opera
-                elem.webkitRequestFullscreen();
-            } else if (elem.msRequestFullscreen) { // IE/Edge
-                elem.msRequestFullscreen();
-            }
-        }
-
-        // Show a random image
         function showRandomImage() {
             if (availableImages.length === 0) {
                 availableImages = [...images]; // Reset when all images are shown
@@ -107,15 +93,7 @@
             }
         }
 
-        // Start with a random image when the page loads
-        window.onload = function () {
-            enterFullScreen();
-            showRandomImage();
-        };
-
-        // Change to another random image on click
         imageElement.addEventListener('click', showRandomImage);
-
     </script>
 
 </body>
