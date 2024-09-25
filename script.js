@@ -87,15 +87,15 @@ function showQuestion() {
     const currentQuestion = questions[currentQuestionIndex];
     questionContainer.textContent = currentQuestion.question;
 
-    // Create answer button
-    const answerButton = document.createElement("div");
-    answerButton.textContent = currentQuestion.answer;
-    answerButton.classList.add("answer");
-    answerButton.onclick = selectAnswer; // Attach click event to answer
+    // Create answer element
+    const answerElement = document.createElement("div");
+    answerElement.textContent = currentQuestion.answer;
+    answerElement.classList.add("answer");
+    answerElement.onclick = selectAnswer; // Attach click event to answer
 
     // Clear previous answers and show new answer
     answerContainer.innerHTML = ""; 
-    answerContainer.appendChild(answerButton);
+    answerContainer.appendChild(answerElement);
 }
 
 function selectAnswer() {
