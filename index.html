@@ -47,12 +47,13 @@
         .answer {
             font-size: 1.2rem;
             margin-bottom: 30px;
-            color: #ffcc00; /* Highlight the answer in yellow */
+            color: white; /* Change the answer color to white */
         }
 
         #next-button {
-            background-color: #ff9900;
-            border: none;
+            background-color: white; /* Change background color to white */
+            color: black; /* Change text color to black for visibility */
+            border: 2px solid #ff9900; /* Optional: Add a border for better visibility */
             padding: 15px;
             margin-top: 20px;
             border-radius: 10px;
@@ -62,7 +63,7 @@
         }
 
         #next-button:hover {
-            background-color: #ff6600;
+            background-color: #ffcc00; /* Change hover color for better effect */
         }
 
         @keyframes fadeOut {
@@ -115,8 +116,8 @@
         { question: "What day of the week does AEW Dynamite air?", answer: "Wednesday" },
         { question: "Who was the first-ever AEW World Champion?", answer: "Chris Jericho" },
         { question: "Who defeated Chris Jericho to become the second AEW World Champion?", answer: "Jon Moxley" },
-        { question: "What is the name of AEW's women's division championship?", answer: "AEW Women's World Championship" },
-        { question: "Who was the first AEW Women's World Champion?", answer: "Riho" },
+        { question: "What is the name of AEW's women's division championship?", answer: "AEW Women’s World Championship" },
+        { question: "Who was the first AEW Women’s World Champion?", answer: "Riho" },
         { question: "Which wrestler is known for his catchphrase 'A little bit of the bubbly'?", answer: "Chris Jericho" },
         { question: "Who is known as 'The Cleaner' in AEW?", answer: "Kenny Omega" },
         { question: "What AEW faction is known as 'The Inner Circle'?", answer: "Chris Jericho's group" },
@@ -125,46 +126,110 @@
         { question: "What year did Jon Moxley make his AEW debut?", answer: "2019 (at Double or Nothing)" },
         { question: "What is the name of AEW’s Friday night show?", answer: "Rampage" },
         { question: "Which AEW wrestler uses the nickname 'Freshly Squeezed'?", answer: "Orange Cassidy" },
-        // Add the remaining questions following the same format
+        { question: "Who won the AEW World Tag Team Championship at All Out 2021?", answer: "The Lucha Brothers (Penta El Zero Miedo and Rey Fénix)" },
+        { question: "What is the name of AEW’s signature Casino Battle Royale match?", answer: "The Casino Battle Royale" },
+        { question: "Who is the leader of The Elite faction in AEW?", answer: "Kenny Omega" },
+        { question: "What is the signature move of AEW wrestler Darby Allin?", answer: "The Coffin Drop" },
+        { question: "Who is known as 'The Best Bout Machine' in AEW?", answer: "Kenny Omega" },
+        { question: "What event marked CM Punk’s return to professional wrestling in AEW?", answer: "AEW Rampage: The First Dance (2021)" },
+        { question: "Who is AEW’s first two-time TNT Champion?", answer: "Cody Rhodes" },
+        { question: "What is the name of AEW’s annual November pay-per-view event?", answer: "Full Gear" },
+        { question: "Which AEW wrestler is known as 'The Mad King'?", answer: "Eddie Kingston" },
+        { question: "Who defeated Kenny Omega to become AEW World Champion at Full Gear 2021?", answer: "'Hangman' Adam Page" },
+        { question: "Who was the first wrestler to win the AEW Women’s World Championship twice?", answer: "Hikaru Shida" },
+        { question: "What faction did MJF lead in AEW?", answer: "The Pinnacle" },
+        { question: "What is AEW’s signature match type that involves two rings surrounded by a cage?", answer: "WarGames (referred to in AEW as Blood & Guts)" },
+        { question: "Which WWE Hall of Famer made his AEW debut at Winter Is Coming 2020?", answer: "Sting" },
+        { question: "Who are the members of the tag team FTR in AEW?", answer: "Dax Harwood and Cash Wheeler" },
+        { question: "What is the name of the AEW title that is defended internationally as a secondary singles championship?", answer: "AEW International Championship (formerly known as the AEW TNT Championship)" },
+        { question: "Which AEW faction is led by Jon Moxley?", answer: "The Blackpool Combat Club" },
+        { question: "Who won the AEW World Title Eliminator Tournament at Full Gear 2020?", answer: "Kenny Omega" },
+        { question: "Which AEW factions had a cinematic match called the 'Stadium Stampede'? (2020)", answer: "The Elite vs. The Inner Circle" },
+        { question: "What is the name of AEW’s annual September pay-per-view event?", answer: "All Out" },
+        { question: "Who won the inaugural AEW Trios Championship?", answer: "The Elite (Kenny Omega and The Young Bucks)" },
+        { question: "Who is known as 'The Bastard' in AEW?", answer: "PAC" },
+        { question: "Who faced Jon Moxley in the AEW World Championship match at Double or Nothing 2020?", answer: "Brodie Lee (Mr. Brodie Lee)" },
+        { question: "What AEW event was held in front of a sold-out crowd in Arthur Ashe Stadium in New York?", answer: "AEW Dynamite: Grand Slam" },
+        { question: "Who are the tag team champions known as The Young Bucks?", answer: "Matt and Nick Jackson" },
+        { question: "What signature move does AEW wrestler Cody Rhodes use?", answer: "The Cross Rhodes" },
+        { question: "Which AEW event featured the exploding barbed wire deathmatch between Kenny Omega and Jon Moxley?", answer: "Revolution 2021" },
+        { question: "What is the name of the submission move used by Bryan Danielson in AEW?", answer: "The LeBell Lock" },
+        { question: "Which AEW wrestler is known for their 'cowboy sh*t' catchphrase?", answer: "'Hangman' Adam Page" },
+        { question: "What AEW event did Chris Jericho face Kenny Omega in their first match in the promotion?", answer: "Double or Nothing 2019" },
+        { question: "Who are the members of the Death Triangle faction in AEW?", answer: "PAC, Penta El Zero Miedo, and Rey Fénix" },
+        { question: "Which female wrestler won the AEW Women’s World Championship at All Out 2021?", answer: "Dr. Britt Baker, D.M.D." },
+        { question: "What AEW show was launched in June 2023 on Saturday nights?", answer: "AEW Collision" },
+        { question: "Who won the first-ever AEW Casino Ladder Match at Double or Nothing 2020?", answer: "Brian Cage" },
+        { question: "Which AEW wrestler has the nickname 'The Spanish God'?", answer: "Sammy Guevara" },
+        { question: "Who was the first AEW wrestler to appear on a WWE program?", answer: "Chris Jericho (on Stone Cold Steve Austin’s Broken Skull Sessions)" },
+        { question: "What is the name of AEW’s developmental show that features up-and-coming talent?", answer: "AEW Dark" },
+        { question: "Who won the AEW World Tag Team Championship at Revolution 2020?", answer: "Kenny Omega and 'Hangman' Adam Page" },
+        { question: "Which AEW wrestler is famous for their entrance song, 'Judas'?", answer: "Chris Jericho" },
+        { question: "Who was the first person to win the AEW All-Atlantic Championship, now known as the AEW International Championship?", answer: "PAC" },
+        { question: "What was the main event of AEW Full Gear 2022?", answer: "Jon Moxley vs. MJF for the AEW World Championship" },
+        { question: "What was the original name of the AEW International Championship?", answer: "The AEW All-Atlantic Championship" },
+        { question: "Who was the first AEW wrestler to win the IWGP United States Heavyweight Championship while also competing in AEW?", answer: "Jon Moxley" },
+        { question: "What was the date of AEW’s inaugural episode of Dynamite on TNT?", answer: "October 2, 2019" },
+        { question: "Who did Hikaru Shida defeat to win her first AEW Women’s World Championship?", answer: "Nyla Rose" },
+        { question: "Which wrestler made a surprise debut as the Joker in the Casino Battle Royale at All Out 2022, winning the match?", answer: "MJF (under a mask as the Joker)" },
+        { question: "What match type did AEW introduce at Revolution 2022, featuring barbed wire ropes and a 30-minute countdown?", answer: "Exploding Barbed Wire Deathmatch" },
+        { question: "Which AEW wrestler has a signature move called 'The Dead Eye'?", answer: "'Hangman' Adam Page" },
+        { question: "Who was the first wrestler to pin Kenny Omega in AEW after he won the AEW World Championship?", answer: "Christian Cage (on AEW Rampage)" },
+        { question: "What is the name of the AEW event co-produced with NJPW in 2022?", answer: "Forbidden Door" },
+        { question: "Who won the AEW World Championship Eliminator Tournament at Full Gear 2022?", answer: "Ricky Starks" },
+        { question: "Which tag team did SCU defeat to become the first-ever AEW World Tag Team Champions?", answer: "The Lucha Brothers (Penta El Zero Miedo and Rey Fénix)" },
+        { question: "What was the outcome of Jon Moxley vs. Kenny Omega in their unsanctioned match at Full Gear 2019?", answer: "Jon Moxley won" },
+        { question: "Who was Cody Rhodes’ opponent in the first-ever AEW Steel Cage Match in February 2020?", answer: "Wardlow" },
+        { question: "Which AEW star turned heel and joined the Blackpool Combat Club in 2023?", answer: "Wheeler Yuta" },
+        { question: "What was the final match type in the feud between Sammy Guevara and Matt Hardy at Full Gear 2020?", answer: "Elite Deletion Match" },
+        { question: "Who was the first wrestler to hold both the AEW World Championship and the AAA Mega Championship simultaneously?", answer: "Kenny Omega" },
+        { question: "Who faced Chris Jericho in the first-ever AEW World Championship match at All Out 2019?", answer: "'Hangman' Adam Page" }
     ];
 
-    let usedQuestions = []; // Keep track of used questions
     let currentQuestionIndex = 0;
 
-    // Shuffle questions and display them in random order
-    function shuffleQuestions() {
-        quizData.sort(() => Math.random() - 0.5);
+    // Shuffle the quiz data
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
     }
 
-    // Load the next question and answer
-    function nextQuestion() {
-        if (usedQuestions.length === quizData.length) {
-            // All questions used, restart
-            usedQuestions = [];
-            shuffleQuestions();
-        }
+    // Start the quiz
+    shuffle(quizData);
+    showQuestion();
 
-        currentQuestionIndex = usedQuestions.length;
-        const currentQuestion = quizData[currentQuestionIndex];
+    function showQuestion() {
+        const questionContainer = document.getElementById("question");
+        const answerContainer = document.getElementById("answer");
 
-        // Show question and answer
-        document.getElementById('question').textContent = currentQuestion.question;
-        document.getElementById('answer').textContent = currentQuestion.answer;
+        questionContainer.innerText = quizData[currentQuestionIndex].question;
+        answerContainer.innerText = "Loading answer...";
 
-        // Add to used questions
-        usedQuestions.push(currentQuestion);
+        // Fade in effect
+        answerContainer.classList.remove("fadeIn");
+        answerContainer.classList.add("fadeOut");
 
-        // Animate the transition
-        document.getElementById('question-container').classList.add('fadeOut');
         setTimeout(() => {
-            document.getElementById('question-container').classList.remove('fadeOut');
-            document.getElementById('question-container').classList.add('fadeIn');
+            answerContainer.innerText = quizData[currentQuestionIndex].answer;
+            answerContainer.classList.remove("fadeOut");
+            answerContainer.classList.add("fadeIn");
         }, 500);
     }
 
-    // Initial setup: Shuffle questions and load the first one
-    shuffleQuestions();
-    nextQuestion();
+    function nextQuestion() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < quizData.length) {
+            showQuestion();
+        } else {
+            const questionContainer = document.getElementById("question");
+            const answerContainer = document.getElementById("answer");
+            questionContainer.innerText = "Thank you for playing!";
+            answerContainer.innerText = "";
+            document.getElementById("next-button").style.display = "none"; // Hide the next button
+        }
+    }
 </script>
 
 </body>
