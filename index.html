@@ -1,22 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Elite Wrestling</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Balloon&display=swap"> <!-- Link to Balloon font -->
-</head>
-<body>
-    <img id="logo" src="https://i.imgur.com/cyZ0Z21.png" alt="AEW Logo">
-    <h1 id="title">ALL ELITE WRESTLING</h1>
-    <div id="question-container">
-        <p id="question">What year was All Elite Wrestling (AEW) founded?</p>
-        <div id="answer-container">
-            <button class="answer" onclick="showAnswer('2019')">2019</button>
-        </div>
-    </div>
-    
-    <script src="script.js"></script>
-</body>
-</html>
+html, body {
+    height: 100%; /* Full height for the body and html */
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* To prevent scrollbars */
+    font-family: 'Balloon', sans-serif; /* Use Balloon font */
+    background-color: rgba(255, 255, 255, 0); /* Transparent background */
+    color: #000; /* Default text color for black text */
+    text-align: center;
+}
+
+#logo {
+    width: 300px; /* Adjust logo size as needed */
+    margin: 10px auto; /* Center logo */
+    display: block; /* Block display for the image */
+}
+
+#title {
+    font-size: 36px; /* Keep title size large */
+    margin: 0;
+    color: #FFD700; /* Gold color for the title */
+    position: relative;
+    top: -10px; /* Slightly adjust position */
+}
+
+#question-container {
+    padding: 0;
+    position: relative;
+    top: 0; /* Align content closer to the title */
+    margin: 0;
+}
+
+#question {
+    font-size: 24px; /* Question text size */
+    margin: 10px 0; /* Reduced margins for compact look */
+    cursor: pointer; /* Pointer cursor for clickability */
+}
+
+#answer {
+    font-size: 24px; /* Answer text size */
+    margin: 10px 0; /* Margin for spacing */
+    display: none; /* Initially hidden */
+}
+
+.hidden {
+    display: none; /* Class to hide elements */
+}
+
+/* Ensuring the whole content is higher on the page */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align content near the top */
+}
