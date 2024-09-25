@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Balloon';
+    src: url('https://your-balloon-font-url.woff2') format('woff2'); /* Ensure you link to the Balloon font */
+}
+
 body {
     font-family: 'Balloon', sans-serif;
     background-color: rgba(255, 255, 255, 0); /* Transparent background */
@@ -8,24 +13,25 @@ body {
 }
 
 #logo {
-    width: 300px; /* Adjust logo size as needed */
-    margin: 10px auto; /* Reduce the space around the logo */
+    width: 200px; /* Adjust logo size */
+    margin: 5px auto; /* Smaller margin for logo */
     display: block;
 }
 
 #title {
-    font-size: 36px; /* Title size */
-    margin: 10px 0; /* Reduce the space between the logo and the title */
+    font-size: 36px; /* Title size remains the same */
+    margin: 5px 0; /* Reduce the space between the logo and the title */
     color: #FFD700; /* Gold color for the title */
 }
 
 #question-container {
-    padding: 10px; /* Reduce padding around question container */
+    padding: 5px; /* Reduce padding around question container */
+    margin-top: 5px; /* Reduce top margin for compactness */
 }
 
 #question {
-    font-size: 24px;
-    margin-bottom: 10px; /* Reduce space between the question and answer */
+    font-size: 24px; /* Keep question text size */
+    margin-bottom: 5px; /* Reduce space between the question and answer */
 }
 
 #answer-container {
@@ -38,8 +44,8 @@ body {
     background: transparent; /* No background */
     border: none; /* Remove border */
     color: #fff; /* Text color */
-    font-size: 20px;
-    margin: 5px 0; /* Reduce space between answers */
+    font-size: 20px; /* Keep answer text size */
+    margin: 3px 0; /* Smaller margin between answers */
     cursor: pointer; /* Cursor change on hover */
     transition: transform 0.1s; /* Animation effect */
 }
