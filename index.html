@@ -3,13 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Image Display</title>
+    <title>All Elite Wrestling</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="image-container">
-        <img id="random-image" src="" alt="Random Image" onclick="changeImage()">
+    <div class="container">
+        <img src="https://i.imgur.com/rm1N1Vx.png" alt="AEW Logo" class="logo">
+        <div id="question-container">
+            <h2 id="question"></h2>
+            <div id="answers-container"></div>
+        </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
