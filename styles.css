@@ -1,37 +1,37 @@
 @font-face {
     font-family: 'Balloon';
-    src: url('https://your-balloon-font-url.woff2') format('woff2'); /* Ensure you link to the Balloon font */
+    src: url('https://your-balloon-font-url.woff2') format('woff2'); /* Replace with your Balloon font file */
 }
 
-body {
+html, body {
+    height: 100%;  /* Full height for the body and html */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;  /* To prevent scrollbars */
     font-family: 'Balloon', sans-serif;
     background-color: rgba(255, 255, 255, 0); /* Transparent background */
     color: #fff;
     text-align: center;
-    margin: 0;
-    padding: 0;
-}
-
-#logo {
-    width: 200px; /* Adjust logo size */
-    margin: 5px auto; /* Smaller margin for logo */
-    display: block;
 }
 
 #title {
-    font-size: 36px; /* Title size remains the same */
-    margin: 5px 0; /* Reduce the space between the logo and the title */
+    font-size: 36px; /* Keep title size large */
+    margin: 0;
     color: #FFD700; /* Gold color for the title */
+    position: relative;
+    top: 10%; /* Push title near the top */
 }
 
 #question-container {
-    padding: 5px; /* Reduce padding around question container */
-    margin-top: 5px; /* Reduce top margin for compactness */
+    padding: 0;
+    position: relative;
+    top: 15%; /* Adjust this to push content closer to the top */
+    margin: 0;
 }
 
 #question {
-    font-size: 24px; /* Keep question text size */
-    margin-bottom: 5px; /* Reduce space between the question and answer */
+    font-size: 24px;
+    margin: 10px 0; /* Reduced margins for compact look */
 }
 
 #answer-container {
@@ -42,14 +42,21 @@ body {
 
 .answer {
     background: transparent; /* No background */
-    border: none; /* Remove border */
+    border: none; /* No borders */
     color: #fff; /* Text color */
-    font-size: 20px; /* Keep answer text size */
-    margin: 3px 0; /* Smaller margin between answers */
+    font-size: 20px;
+    margin: 5px 0; /* Compact margins between answers */
     cursor: pointer; /* Cursor change on hover */
-    transition: transform 0.1s; /* Animation effect */
+    transition: transform 0.1s ease-in-out; /* Animation effect */
 }
 
 .answer:hover {
-    transform: scale(1.05); /* Slightly increase size on hover */
+    transform: scale(1.05); /* Hover effect for interactivity */
+}
+
+/* Ensuring the whole content is higher on the page */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align content near the top */
 }
