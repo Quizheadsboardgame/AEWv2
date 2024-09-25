@@ -1,23 +1,20 @@
 body {
-    background-color: rgba(0, 0, 0, 0.7); /* semi-transparent black background */
-    color: white;
-    font-family: 'Bubblegum Sans', cursive; /* Use Balloon style font */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-
-.container {
+    font-family: 'Balloon', sans-serif;
+    background-color: rgba(255, 255, 255, 0); /* Transparent background */
+    color: #fff;
     text-align: center;
-    max-width: 600px;
+    margin: 0;
+    padding: 0;
 }
 
-.logo {
-    width: 100%; /* Responsive logo */
-    max-width: 300px; /* Limit max width */
-    margin-bottom: 20px;
+#logo {
+    width: 300px; /* Adjust logo size as needed */
+    margin: 20px auto;
+    display: block;
+}
+
+#question-container {
+    padding: 20px;
 }
 
 #question {
@@ -25,27 +22,24 @@ body {
     margin-bottom: 20px;
 }
 
+#answer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .answer {
-    display: inline-block;
-    margin: 10px;
-    padding: 10px 20px;
-    background-color: rgba(255, 255, 255, 0.2);
-    border: 2px solid white;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.1s;
-    font-family: 'Bubblegum Sans', cursive; /* Ensure answers use Balloon style font */
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for answer */
+    border: none; /* Remove border */
+    color: #fff; /* Text color */
+    padding: 10px 20px; /* Add padding */
+    font-size: 20px;
+    margin: 10px 0;
+    cursor: pointer; /* Cursor change on hover */
+    transition: transform 0.1s; /* Animation effect */
 }
 
 .answer:hover {
-    background-color: rgba(255, 255, 255, 0.4);
-}
-
-.answer:active {
-    transform: scale(0.95); /* Click animation */
-}
-
-.hidden {
-    display: none;
+    transform: scale(1.05); /* Slightly increase size on hover */
 }
 
