@@ -13,6 +13,12 @@ body {
     display: block;
 }
 
+#title {
+    font-size: 36px; /* Title size */
+    margin: 20px 0;
+    color: #FFD700; /* Gold color for the title */
+}
+
 #question-container {
     padding: 20px;
 }
@@ -29,10 +35,9 @@ body {
 }
 
 .answer {
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for answer */
+    background: transparent; /* No background */
     border: none; /* Remove border */
     color: #fff; /* Text color */
-    padding: 10px 20px; /* Add padding */
     font-size: 20px;
     margin: 10px 0;
     cursor: pointer; /* Cursor change on hover */
