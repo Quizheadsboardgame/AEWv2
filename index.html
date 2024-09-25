@@ -16,8 +16,9 @@
         }
 
         #imageContainer {
-            width: 150%; /* Increased size by 50% */
-            height: auto;
+            width: 100vw; /* Full viewport width */
+            height: 100vh; /* Full viewport height */
+            object-fit: contain; /* Keeps aspect ratio while fitting inside */
             transition: transform 0.5s ease;
             animation: clickMotion 0.5s ease;
             cursor: pointer;
