@@ -1,63 +1,77 @@
 html, body {
-    height: 100%; /* Full height for the body and html */
+    height: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden; /* To prevent scrollbars */
-    font-family: 'Balloon', sans-serif; /* Use Balloon font */
+    overflow: hidden;
+    font-family: 'Baloo 2', sans-serif; /* Using the thick Baloo font */
     background-color: rgba(255, 255, 255, 0); /* Transparent background */
-    color: #fff;
     text-align: center;
 }
 
 #logo {
-    width: 300px; /* Adjust logo size as needed */
-    margin: 10px auto; /* Center logo */
-    display: block; /* Block display for the image */
+    width: 250px;
+    margin: 20px auto;
+    display: block;
 }
 
 #title {
-    font-size: 36px; /* Keep title size large */
-    margin: 0;
-    color: #FFD700; /* Gold color for the title */
-    position: relative;
-    top: -10px; /* Slightly adjust position */
+    font-size: 36px;
+    color: #FFD700; /* Gold color for title */
+    margin-bottom: 20px;
 }
 
-#question-container {
-    padding: 0;
+#qa-container {
     position: relative;
-    top: 0; /* Align content closer to the title */
-    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 200px); /* Adjust to fit */
 }
 
 #question {
-    font-size: 24px; /* Question text size */
-    margin: 10px 0; /* Reduced margins for compact look */
+    font-size: 24px;
+    color: #000; /* Black color for the question */
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
 }
 
-#answer-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center answers */
+#question:hover {
+    transform: scale(1.05); /* Slight scale up on hover */
 }
 
-.answer {
-    background: transparent; /* No background */
-    border: none; /* No borders */
-    color: #fff; /* Text color */
-    font-size: 20px; /* Answer text size */
-    margin: 5px 0; /* Compact margins between answers */
-    cursor: pointer; /* Cursor change on hover */
-    transition: transform 0.1s ease-in-out; /* Animation effect */
+#answer {
+    font-size: 22px;
+    color: #000; /* Black color for the answer */
+    margin-top: 10px;
 }
 
-.answer:hover {
-    transform: scale(1.05); /* Hover effect for interactivity */
+.hidden {
+    display: none;
 }
 
-/* Ensuring the whole content is higher on the page */
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* Align content near the top */
+.fade {
+    animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    #logo {
+        width: 180px;
+    }
+    #title {
+        font-size: 28px;
+    }
+    #question {
+        font-size: 20px;
+    }
+    #answer {
+        font-size: 18px;
+    }
 }
