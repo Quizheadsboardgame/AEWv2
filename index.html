@@ -3,20 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALL ELITE WRESTLING</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap"> <!-- Using a thick Balloon-like font (Baloo 2) -->
+    <title>All ELITE WRESTLING Quiz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', 'Balloon', cursive; /* Balloon-like font style */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5); /* Transparent background */
+            color: white;
+            text-align: center;
+        }
+
+        #quiz-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        #logo {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .question {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .answer {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #ffcc00; /* Highlight the answer in yellow */
+        }
+
+        #next-button {
+            background-color: #ff9900;
+            border: none;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease-in-out;
+        }
+
+        #next-button:hover {
+            background-color: #ff6600;
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fadeOut {
+            animation: fadeOut 0.5s forwards;
+        }
+
+        .fadeIn {
+            animation: fadeIn 0.5s forwards;
+        }
+    </style>
 </head>
 <body>
-    <img id="logo" src="https://i.imgur.com/cyZ0Z21.png" alt="AEW Logo">
-    <h1 id="title">ALL ELITE WRESTLING</h1>
-    <div id="qa-container">
-        <div id="question-answer" class="fade">
-            <p id="question"></p>
-            <p id="answer" class="hidden"></p>
-        </div>
-    </div>
 
-    <script src="script.js"></script>
+<div id="quiz-container">
+    <img id="logo" src="https://i.imgur.com/cyZ0Z21.png" alt="All Elite Wrestling Logo">
+    <h1>All ELITE WRESTLING Quiz</h1>
+    <div id="question-container">
+        <div class="question" id="question">Loading question...</div>
+        <div class="answer" id="answer">Loading answer...</div>
+        <button id="next-button" onclick="nextQuestion()">Next Question</button>
+    </div>
+</div>
+
+<script>
+    // Question and answers data
+    const quizData = [
+        { question: "What year was All Elite Wrestling (AEW) founded?", answer: "2019" },
+        { question: "Who are the founders of AEW?", answer: "Tony Khan, Cody Rhodes, The Young Bucks (Matt and Nick Jackson), and Kenny Omega" },
+        { question: "Who is the current President and CEO of AEW?", answer: "Tony Khan" },
+        { question: "What was the name of AEW's first official pay-per-view event?", answer: "Double or Nothing (2019)" },
+        { question: "Which network broadcasts AEW Dynamite in the U.S.?", answer: "TBS" },
+        { question: "What day of the week does AEW Dynamite air?", answer: "Wednesday" },
+        { question: "Who was the first-ever AEW World Champion?", answer: "Chris Jericho" },
+        { question: "Who defeated Chris Jericho to become the second AEW World Champion?", answer: "Jon Moxley" },
+        { question: "What is the name of AEW's women's division championship?", answer: "AEW Women's World Championship" },
+        { question: "Who was the first AEW Women's World Champion?", answer: "Riho" },
+        { question: "Which wrestler is known for his catchphrase 'A little bit of the bubbly'?", answer: "Chris Jericho" },
+        { question: "Who is known as 'The Cleaner' in AEW?", answer: "Kenny Omega" },
+        { question: "What AEW faction is known as 'The Inner Circle'?", answer: "Chris Jericho's group" },
+        { question: "Which tag team in AEW is known as 'The Lucha Brothers'?", answer: "Penta El Zero Miedo and Rey Fénix" },
+        { question: "Who was the inaugural AEW TNT Champion?", answer: "Cody Rhodes" },
+        { question: "What year did Jon Moxley make his AEW debut?", answer: "2019 (at Double or Nothing)" },
+        { question: "What is the name of AEW’s Friday night show?", answer: "Rampage" },
+        { question: "Which AEW wrestler uses the nickname 'Freshly Squeezed'?", answer: "Orange Cassidy" },
+        // Add the remaining questions following the same format
+    ];
+
+    let usedQuestions = []; // Keep track of used questions
+    let currentQuestionIndex = 0;
+
+    // Shuffle questions and display them in random order
+    function shuffleQuestions() {
+        quizData.sort(() => Math.random() - 0.5);
+    }
+
+    // Load the next question and answer
+    function nextQuestion() {
+        if (usedQuestions.length === quizData.length) {
+            // All questions used, restart
+            usedQuestions = [];
+            shuffleQuestions();
+        }
+
+        currentQuestionIndex = usedQuestions.length;
+        const currentQuestion = quizData[currentQuestionIndex];
+
+        // Show question and answer
+        document.getElementById('question').textContent = currentQuestion.question;
+        document.getElementById('answer').textContent = currentQuestion.answer;
+
+        // Add to used questions
+        usedQuestions.push(currentQuestion);
+
+        // Animate the transition
+        document.getElementById('question-container').classList.add('fadeOut');
+        setTimeout(() => {
+            document.getElementById('question-container').classList.remove('fadeOut');
+            document.getElementById('question-container').classList.add('fadeIn');
+        }, 500);
+    }
+
+    // Initial setup: Shuffle questions and load the first one
+    shuffleQuestions();
+    nextQuestion();
+</script>
+
 </body>
 </html>
