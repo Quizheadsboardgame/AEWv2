@@ -3,84 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Image Slideshow</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            /* Transparent background */
-            background: transparent;
-        }
-
-        #imageContainer {
-            width: 100vw; /* Full viewport width */
-            height: 100vh; /* Full viewport height */
-            object-fit: contain; /* Keeps aspect ratio while fitting inside */
-            transition: transform 0.5s ease;
-            animation: clickMotion 0.5s ease;
-            cursor: pointer;
-        }
-
-        @keyframes clickMotion {
-            0% { transform: scale(1); }
-            50% { transform: scale(0.95); }
-            100% { transform: scale(1); }
-        }
-    </style>
+    <title>Random Image Display</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<img id="imageContainer" src="" alt="Random Image" onclick="showRandomImage()">
+    <div class="image-container">
+        <img id="randomImage" src="" alt="Random Image" onclick="showNextImage()">
+    </div>
 
-<script>
-    const imageUrls = [
-        "https://i.postimg.cc/HxphVDWY/1.png",
-        "https://i.postimg.cc/wTs0xT55/2.png",
-        "https://i.postimg.cc/LsmTVtcv/3.png",
-        "https://i.postimg.cc/FF6TQJSs/4.png"
-    ];
-
-    let usedImages = [];
-
-    function showRandomImage() {
-        if (usedImages.length === imageUrls.length) {
-            usedImages = []; // Reset if all images have been shown
-        }
-
-        let randomIndex;
-        do {
-            randomIndex = Math.floor(Math.random() * imageUrls.length);
-        } while (usedImages.includes(randomIndex));
-
-        usedImages.push(randomIndex);
-        const randomImageUrl = imageUrls[randomIndex];
-
-        const imgElement = document.getElementById('imageContainer');
-        imgElement.src = randomImageUrl;
-
-        // Trigger the click motion effect on each new image
-        imgElement.style.animation = 'none';
-        setTimeout(() => {
-            imgElement.style.animation = 'clickMotion 0.5s';
-        }, 10);
-    }
-
-    function shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-    }
-
-    // Randomize the order of images on page load
-    shuffleArray(imageUrls);
-
-    // Show the first random image on load
-    showRandomImage();
-</script>
-
+    <script src="script.js"></script>
 </body>
 </html>
