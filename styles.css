@@ -14,7 +14,7 @@ body {
 }
 
 img {
-    width: 300%; /* 3x the size */
+    width: 900%; /* 3x the size */
     max-width: 600px; /* Maintain a max width */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
