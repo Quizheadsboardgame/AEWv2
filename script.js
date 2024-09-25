@@ -1,5 +1,5 @@
-// Array of image URLs
-const images = [
+// List of image URLs
+const imageUrls = [
     "https://i.postimg.cc/YCjnbML4/1.png",
     "https://i.postimg.cc/tC8WGjmn/10.png",
     "https://i.postimg.cc/KY2T45bZ/11.png",
@@ -51,35 +51,37 @@ const images = [
     "https://i.postimg.cc/vZ674B6v/9.png"
 ];
 
-// To store the randomized order of images
-let imageOrder = [];
+let shuffledImages = [];
+let currentIndex = 0;
 
-// Shuffle the images and reset the order when needed
+// Function to shuffle the images
 function shuffleImages() {
-    imageOrder = images.slice();
-    for (let i = imageOrder.length - 1; i > 0; i--) {
+    shuffledImages = [...imageUrls]; // Copy original list
+    for (let i = shuffledImages.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [imageOrder[i], imageOrder[j]] = [imageOrder[j], imageOrder[i]];
+        [shuffledImages[i], shuffledImages[j]] = [shuffledImages[j], shuffledImages[i]]; // Swap
     }
+    currentIndex = 0; // Reset the index
 }
 
-// Show the next image in the shuffled order
-function showNextImage() {
-    if (imageOrder.length === 0) {
-        shuffleImages(); // Reshuffle if all images have been shown
+// Function to change the image when clicked
+function changeImage() {
+    if (currentIndex >= shuffledImages.length) {
+        shuffleImages(); // Reshuffle when all images have been shown
     }
-    const nextImage = imageOrder.pop(); // Get the next image
-    const imageElement = document.getElementById("randomImage");
-    imageElement.src = nextImage;
 
-    // Animation effect for click
-    imageElement.classList.remove('clicked');
-    void imageElement.offsetWidth; // Trigger reflow
-    imageElement.classList.add('clicked');
+    const imageElement = document.getElementById("random-image");
+    imageElement.style.opacity = 0; // Start fade out
+
+    setTimeout(() => {
+        imageElement.src = shuffledImages[currentIndex]; // Change image source
+        imageElement.style.opacity = 1; // Fade in
+        currentIndex++;
+    }, 300); // Time matches transition time for a smooth effect
 }
 
-// On page load, shuffle and show the first image
+// Initialize the first random image on page load
 window.onload = function() {
     shuffleImages();
-    showNextImage();
+    changeImage();
 };
